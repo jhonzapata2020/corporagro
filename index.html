@@ -75,6 +75,43 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.12);
         }
+        /* SKEUOMORPHISM & IMAGE SHARPNESS ENGINE (90° SHARP CORNERS) */
+        .skeuo-sharp {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            filter: contrast(1.15) brightness(1.04) saturate(1.22);
+        }
+        .skeuo-card {
+            border-radius: 0px !important;
+            box-shadow: 
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.5),
+                inset 0 -2px 0 0 rgba(0, 0, 0, 0.9),
+                inset 1px 0 0 0 rgba(255, 255, 255, 0.25),
+                inset -1px 0 0 0 rgba(0, 0, 0, 0.7),
+                0 25px 50px -12px rgba(0, 0, 0, 0.9),
+                0 0 0 1px rgba(0, 0, 0, 0.8);
+            position: relative;
+        }
+        .skeuo-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.04) 40%, transparent 60%);
+            pointer-events-none;
+            z-index: 10;
+        }
+        .skeuo-card-active {
+            border: 2px solid #F59E0B !important;
+            box-shadow: 
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.85),
+                inset 0 -2px 0 0 rgba(0, 0, 0, 0.95),
+                0 0 35px rgba(245, 158, 11, 0.45),
+                0 30px 60px -15px rgba(0, 0, 0, 0.95);
+        }
+        .card-slit-label {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+        }
         /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -84,7 +121,7 @@
         }
         ::-webkit-scrollbar-thumb {
             background: #156b3e;
-            border-radius: 4px;
+            border-radius: 0px;
         }
         ::-webkit-scrollbar-thumb:hover {
             background: #22c55e;
@@ -254,50 +291,50 @@
                 <!-- RIGHT CARDS STRIP: HORIZON / PATAGONIA 3D FLOATING CARDS -->
                 <div class="lg:col-span-6">
                     <div class="relative w-full overflow-visible py-4">
-                        <div class="flex items-center gap-4 sm:gap-5 transition-transform duration-700 ease-out" id="floatingCardsRow">
+                        <div class="flex items-center gap-3 sm:gap-4 transition-transform duration-700 ease-out" id="floatingCardsRow">
                             
                             <!-- SPECIAL CARD: TERMINAL VERTICAL REDEBAN (RECTANGULAR, CERO BORDER-RADIUS, AZUL BANCARIO EN VIDRIO GLASSMORPHISM) -->
-                            <div onclick="openRedebanModal()" class="group relative w-[200px] sm:w-[235px] h-[300px] sm:h-[360px] rounded-none overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 border-2 border-blue-500/80 hover:border-blue-400 bg-slate-950/85 backdrop-blur-2xl shrink-0 p-5 flex flex-col justify-between hover:scale-105 select-none">
+                            <div onclick="openRedebanModal()" class="group relative w-[170px] sm:w-[200px] h-[330px] sm:h-[390px] skeuo-card rounded-none overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 border-2 border-blue-500/80 hover:border-blue-400 bg-slate-950/85 backdrop-blur-2xl shrink-0 p-4 sm:p-5 flex flex-col justify-between hover:scale-105 select-none">
                                 <!-- LUZ AMBIENTAL AZUL BANCARIO -->
-                                <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-600/30 blur-2xl rounded-full pointer-events-none"></div>
-                                <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-cyan-500/20 blur-2xl rounded-full pointer-events-none"></div>
+                                <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-600/30 blur-2xl rounded-none pointer-events-none"></div>
+                                <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-cyan-500/20 blur-2xl rounded-none pointer-events-none"></div>
 
                                 <!-- CABECERA: REDEBAN STATUS -->
-                                <div class="relative z-10 border-b border-white/10 pb-3 flex items-center justify-between">
+                                <div class="relative z-10 border-b border-white/10 pb-2.5 flex items-center justify-between">
                                     <div class="flex items-center gap-1.5">
                                         <span class="w-2 h-2 bg-emerald-400 rounded-none animate-pulse"></span>
-                                        <span class="text-[9px] font-mono font-bold tracking-widest uppercase text-sky-400">PASARELA OFICIAL</span>
+                                        <span class="text-[8px] sm:text-[9px] font-mono font-bold tracking-widest uppercase text-sky-400">PASARELA OFICIAL</span>
                                     </div>
-                                    <span class="text-[9px] font-mono text-slate-400 font-bold">256-BIT SSL</span>
+                                    <span class="text-[8px] sm:text-[9px] font-mono text-slate-400 font-bold">256-BIT SSL</span>
                                 </div>
 
                                 <!-- CENTRO: IDENTIDAD BANCARIA VERTICAL -->
                                 <div class="relative z-10 my-auto text-center space-y-2">
-                                    <div class="w-14 h-14 mx-auto bg-blue-600/20 border border-blue-500/50 flex items-center justify-center text-blue-400 shadow-inner group-hover:scale-110 transition duration-300">
-                                        <i class="fa-solid fa-shield-halved text-yellow-300 text-2xl"></i>
+                                    <div class="w-12 h-12 sm:w-14 sm:h-14 mx-auto bg-blue-600/20 border border-blue-500/50 flex items-center justify-center text-blue-400 shadow-inner group-hover:scale-110 transition duration-300 rounded-none">
+                                        <i class="fa-solid fa-shield-halved text-yellow-300 text-xl sm:text-2xl"></i>
                                     </div>
                                     <div>
-                                        <h4 class="text-base sm:text-lg font-black font-display uppercase tracking-tight text-white leading-tight">
+                                        <h4 class="text-sm sm:text-base font-black font-display uppercase tracking-tight text-white leading-tight">
                                             REDEBAN<br><span class="text-sky-400">MULTICOLOR</span>
                                         </h4>
-                                        <p class="text-[10px] text-slate-300 font-mono mt-1">Canal de Pagos Seguros</p>
+                                        <p class="text-[9px] sm:text-[10px] text-slate-300 font-mono mt-1">Canal de Pagos Seguros</p>
                                     </div>
                                     
                                     <!-- BADGES PAGOS: PSE / VISA / MC -->
-                                    <div class="flex items-center justify-center gap-2 pt-1 text-slate-300">
-                                        <span class="text-[8px] font-bold px-1.5 py-0.5 bg-white/10 font-mono border border-white/15">PSE</span>
-                                        <i class="fa-brands fa-cc-visa text-sm text-slate-300"></i>
-                                        <i class="fa-brands fa-cc-mastercard text-sm text-slate-300"></i>
-                                        <i class="fa-brands fa-cc-amex text-sm text-slate-300"></i>
+                                    <div class="flex items-center justify-center gap-1.5 pt-1 text-slate-300">
+                                        <span class="text-[8px] font-bold px-1 py-0.5 bg-white/10 font-mono border border-white/15">PSE</span>
+                                        <i class="fa-brands fa-cc-visa text-xs text-slate-300"></i>
+                                        <i class="fa-brands fa-cc-mastercard text-xs text-slate-300"></i>
+                                        <i class="fa-brands fa-cc-amex text-xs text-slate-300"></i>
                                     </div>
                                 </div>
 
                                 <!-- PIE: BOTÓN RECTANGULAR DE ACCIÓN -->
-                                <div class="relative z-10 space-y-2">
-                                    <div class="text-[9px] font-mono text-slate-400 text-center">
+                                <div class="relative z-10 space-y-1.5">
+                                    <div class="text-[8px] sm:text-[9px] font-mono text-slate-400 text-center">
                                         NIT: 900.074.281-5
                                     </div>
-                                    <div class="w-full bg-blue-600 group-hover:bg-blue-700 text-white text-[11px] font-black uppercase tracking-wider py-2.5 rounded-none flex items-center justify-center gap-2 shadow-lg transition border-l-4 border-yellow-400">
+                                    <div class="w-full bg-blue-600 group-hover:bg-blue-700 text-white text-[10px] sm:text-[11px] font-black uppercase tracking-wider py-2 sm:py-2.5 rounded-none flex items-center justify-center gap-1.5 shadow-lg transition border-l-4 border-yellow-400">
                                         <i class="fa-solid fa-lock text-yellow-300 text-[10px]"></i>
                                         <span>Pagar en Línea</span>
                                         <i class="fa-solid fa-arrow-right text-[10px]"></i>
@@ -305,67 +342,151 @@
                                 </div>
                             </div>
 
-                            <!-- CARD 0: SIEMBRA Y ASISTENCIA -->
-                            <div class="floating-hero-card active group relative w-[190px] sm:w-[230px] h-[300px] sm:h-[360px] rounded-[28px] overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 border-2 border-amber-400 scale-105 shrink-0" data-card="0" onclick="selectHeroSlide(0)">
-                                <img src="assets/img/cropped-corporagro-3.jpg" alt="Asistencia Rural" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent"></div>
-                                <div class="absolute top-4 left-4 w-9 h-9 rounded-full border-2 border-white overflow-hidden shadow-lg bg-white p-1">
-                                    <img src="assets/img/cropped-logo-corpo.png" class="w-full h-full object-contain">
+                            <!-- CARD 0: SIEMBRA Y ASISTENCIA (ACTIVA: ANCHITA Y GRANDE EN EL MEDIO) -->
+                            <div class="floating-hero-card active group relative w-[270px] sm:w-[340px] md:w-[380px] h-[330px] sm:h-[390px] skeuo-card skeuo-card-active overflow-hidden cursor-pointer shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] shrink-0 select-none opacity-100" data-card="0" onclick="selectHeroSlide(0)">
+                                <img src="assets/img/cropped-corporagro-3.jpg" alt="Asistencia Rural" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 skeuo-sharp">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/35 to-transparent"></div>
+                                
+                                <!-- CONTENIDO COMPLETO (VISIBLE CUANDO ESTÁ ACTIVA / ANCHITA) -->
+                                <div class="card-full-content absolute inset-0 p-5 flex flex-col justify-between text-white z-20">
+                                    <div class="flex items-center justify-between">
+                                        <div class="w-10 h-10 border-2 border-amber-400 bg-slate-950/80 p-1.5 shadow-xl flex items-center justify-center">
+                                            <img src="assets/img/cropped-logo-corpo.png" class="w-full h-full object-contain">
+                                        </div>
+                                        <span class="bg-amber-400 text-slate-950 font-mono text-[9px] font-black uppercase px-2.5 py-1 tracking-widest border border-amber-300 shadow">
+                                            EN CAMPO
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span class="text-[10px] font-mono uppercase tracking-widest text-amber-300 block mb-1">ASISTENCIA DIRECTA</span>
+                                        <h4 class="text-xl sm:text-2xl font-black font-display uppercase tracking-tight leading-none text-white">
+                                            SIEMBRA<br><span class="text-amber-400">PRODUCTIVA</span>
+                                        </h4>
+                                        <p class="text-xs text-slate-300 mt-2 line-clamp-2 font-light">Acompañamiento agronómico en parcelas con tecnología de riego y nutrición de precisión.</p>
+                                        <span class="text-[10px] font-mono text-amber-300/80 uppercase block mt-2">MAGDALENA & ATLÁNTICO</span>
+                                    </div>
                                 </div>
-                                <div class="absolute bottom-5 left-4 right-4 text-white">
-                                    <span class="text-[9px] font-mono uppercase tracking-widest text-amber-300 block mb-1">ASISTENCIA DIRECTA</span>
-                                    <h4 class="text-lg sm:text-xl font-black font-display uppercase tracking-tight leading-none text-white">
-                                        SIEMBRA<br><span class="text-amber-400">PRODUCTIVA</span>
-                                    </h4>
-                                    <span class="text-[10px] font-mono text-slate-300 uppercase block mt-1">MAGDALENA, COL</span>
+
+                                <!-- CONTENIDO DELGADO (PARA CUANDO ESTÁ INACTIVA) -->
+                                <div class="card-slit-content hidden absolute inset-0 p-3 flex flex-col justify-between items-center text-white z-20">
+                                    <div class="w-7 h-7 border border-white/30 bg-slate-950/70 p-1 flex items-center justify-center">
+                                        <i class="fa-solid fa-wheat-awn text-amber-400 text-xs"></i>
+                                    </div>
+                                    <span class="card-slit-label font-mono text-[10px] tracking-widest uppercase font-bold text-slate-200">
+                                        SIEMBRA PRODUCTIVA
+                                    </span>
+                                    <span class="text-[9px] font-mono text-amber-400 font-bold">01</span>
                                 </div>
                             </div>
 
-                            <!-- CARD 1: DISTRITOS DE RIEGO -->
-                            <div class="floating-hero-card group relative w-[190px] sm:w-[230px] h-[300px] sm:h-[360px] rounded-[28px] overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 border border-white/20 hover:border-amber-400 shrink-0 opacity-80 hover:opacity-100" data-card="1" onclick="selectHeroSlide(1)">
-                                <img src="assets/img/nuestra-vision-corporagro-edited.jpg" alt="Distritos de Riego" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent"></div>
-                                <div class="absolute top-4 left-4 w-9 h-9 rounded-full border-2 border-white overflow-hidden shadow-lg bg-sky-500 flex items-center justify-center text-xs">
-                                    <i class="fa-solid fa-droplet text-white"></i>
+                            <!-- CARD 1: DISTRITOS DE RIEGO (INACTIVA: DELGADITA SLIT) -->
+                            <div class="floating-hero-card group relative w-[80px] sm:w-[95px] md:w-[110px] h-[310px] sm:h-[370px] skeuo-card overflow-hidden cursor-pointer shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] shrink-0 select-none opacity-70 hover:opacity-100" data-card="1" onclick="selectHeroSlide(1)">
+                                <img src="assets/img/nuestra-vision-corporagro-edited.jpg" alt="Distritos de Riego" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 skeuo-sharp">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-slate-950/20"></div>
+                                
+                                <!-- CONTENIDO COMPLETO -->
+                                <div class="card-full-content hidden absolute inset-0 p-5 flex flex-col justify-between text-white z-20">
+                                    <div class="flex items-center justify-between">
+                                        <div class="w-10 h-10 border-2 border-sky-400 bg-slate-950/80 p-1.5 shadow-xl flex items-center justify-center">
+                                            <i class="fa-solid fa-droplet text-sky-400 text-lg"></i>
+                                        </div>
+                                        <span class="bg-sky-400 text-slate-950 font-mono text-[9px] font-black uppercase px-2.5 py-1 tracking-widest border border-sky-300 shadow">
+                                            HIDRÁULICA
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span class="text-[10px] font-mono uppercase tracking-widest text-sky-300 block mb-1">HIDRÁULICA RURAL</span>
+                                        <h4 class="text-xl sm:text-2xl font-black font-display uppercase tracking-tight leading-none text-white">
+                                            DISTRITOS<br><span class="text-sky-400">DE RIEGO</span>
+                                        </h4>
+                                        <p class="text-xs text-slate-300 mt-2 line-clamp-2 font-light">Diseño e ingeniería de redes presurizadas para abastecimiento sostenible de agua.</p>
+                                        <span class="text-[10px] font-mono text-sky-300/80 uppercase block mt-2">BARANOA, ATLÁNTICO</span>
+                                    </div>
                                 </div>
-                                <div class="absolute bottom-5 left-4 right-4 text-white">
-                                    <span class="text-[9px] font-mono uppercase tracking-widest text-sky-300 block mb-1">HIDRÁULICA RURAL</span>
-                                    <h4 class="text-lg sm:text-xl font-black font-display uppercase tracking-tight leading-none text-white">
-                                        DISTRITOS<br><span class="text-sky-400">DE RIEGO</span>
-                                    </h4>
-                                    <span class="text-[10px] font-mono text-slate-300 uppercase block mt-1">BARANOA, ATL</span>
+
+                                <!-- CONTENIDO DELGADO (VISIBLE INICIALMENTE) -->
+                                <div class="card-slit-content absolute inset-0 p-3 flex flex-col justify-between items-center text-white z-20">
+                                    <div class="w-7 h-7 border border-white/30 bg-slate-950/70 p-1 flex items-center justify-center">
+                                        <i class="fa-solid fa-droplet text-sky-400 text-xs"></i>
+                                    </div>
+                                    <span class="card-slit-label font-mono text-[10px] tracking-widest uppercase font-bold text-slate-200">
+                                        DISTRITOS DE RIEGO
+                                    </span>
+                                    <span class="text-[9px] font-mono text-sky-400 font-bold">02</span>
                                 </div>
                             </div>
 
-                            <!-- CARD 2: BIOFÁBRICAS Y ABONOS -->
-                            <div class="floating-hero-card group relative w-[190px] sm:w-[230px] h-[300px] sm:h-[360px] rounded-[28px] overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 border border-white/20 hover:border-amber-400 shrink-0 opacity-80 hover:opacity-100" data-card="2" onclick="selectHeroSlide(2)">
-                                <img src="assets/img/elaboracion-de-abono-organico.jpg" alt="Biofábricas" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent"></div>
-                                <div class="absolute top-4 left-4 w-9 h-9 rounded-full border-2 border-white overflow-hidden shadow-lg bg-amber-500 flex items-center justify-center text-xs">
-                                    <i class="fa-solid fa-seedling text-white"></i>
+                            <!-- CARD 2: BIOFÁBRICAS Y ABONOS (INACTIVA: DELGADITA SLIT) -->
+                            <div class="floating-hero-card group relative w-[80px] sm:w-[95px] md:w-[110px] h-[310px] sm:h-[370px] skeuo-card overflow-hidden cursor-pointer shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] shrink-0 select-none opacity-70 hover:opacity-100" data-card="2" onclick="selectHeroSlide(2)">
+                                <img src="assets/img/elaboracion-de-abono-organico.jpg" alt="Biofábricas" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 skeuo-sharp">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-slate-950/20"></div>
+                                
+                                <!-- CONTENIDO COMPLETO -->
+                                <div class="card-full-content hidden absolute inset-0 p-5 flex flex-col justify-between text-white z-20">
+                                    <div class="flex items-center justify-between">
+                                        <div class="w-10 h-10 border-2 border-emerald-400 bg-slate-950/80 p-1.5 shadow-xl flex items-center justify-center">
+                                            <i class="fa-solid fa-seedling text-emerald-400 text-lg"></i>
+                                        </div>
+                                        <span class="bg-emerald-400 text-slate-950 font-mono text-[9px] font-black uppercase px-2.5 py-1 tracking-widest border border-emerald-300 shadow">
+                                            AGROECOLOGÍA
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span class="text-[10px] font-mono uppercase tracking-widest text-emerald-300 block mb-1">SUELOS VIVOS</span>
+                                        <h4 class="text-xl sm:text-2xl font-black font-display uppercase tracking-tight leading-none text-white">
+                                            BIOFÁBRICAS<br><span class="text-emerald-400">& ABONOS</span>
+                                        </h4>
+                                        <p class="text-xs text-slate-300 mt-2 line-clamp-2 font-light">Formulación comunitaria de biofertilizantes orgánicos y micronutrientes para el agro.</p>
+                                        <span class="text-[10px] font-mono text-emerald-300/80 uppercase block mt-2">BOLÍVAR & CÓRDOBA</span>
+                                    </div>
                                 </div>
-                                <div class="absolute bottom-5 left-4 right-4 text-white">
-                                    <span class="text-[9px] font-mono uppercase tracking-widest text-emerald-300 block mb-1">AGROECOLOGÍA</span>
-                                    <h4 class="text-lg sm:text-xl font-black font-display uppercase tracking-tight leading-none text-white">
-                                        BIOFÁBRICAS<br><span class="text-emerald-400">& ABONOS</span>
-                                    </h4>
-                                    <span class="text-[10px] font-mono text-slate-300 uppercase block mt-1">BOLÍVAR, COL</span>
+
+                                <!-- CONTENIDO DELGADO (VISIBLE INICIALMENTE) -->
+                                <div class="card-slit-content absolute inset-0 p-3 flex flex-col justify-between items-center text-white z-20">
+                                    <div class="w-7 h-7 border border-white/30 bg-slate-950/70 p-1 flex items-center justify-center">
+                                        <i class="fa-solid fa-seedling text-emerald-400 text-xs"></i>
+                                    </div>
+                                    <span class="card-slit-label font-mono text-[10px] tracking-widest uppercase font-bold text-slate-200">
+                                        BIOFÁBRICAS Y ABONOS
+                                    </span>
+                                    <span class="text-[9px] font-mono text-emerald-400 font-bold">03</span>
                                 </div>
                             </div>
 
-                            <!-- CARD 3: MUJER RURAL Y COMUNIDAD -->
-                            <div class="floating-hero-card group relative w-[190px] sm:w-[230px] h-[300px] sm:h-[360px] rounded-[28px] overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 border border-white/20 hover:border-amber-400 shrink-0 opacity-80 hover:opacity-100" data-card="3" onclick="selectHeroSlide(3)">
-                                <img src="assets/img/quienes-somos.jpg" alt="Mujer Rural" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent"></div>
-                                <div class="absolute top-4 left-4 w-9 h-9 rounded-full border-2 border-white overflow-hidden shadow-lg bg-rose-500 flex items-center justify-center text-xs">
-                                    <i class="fa-solid fa-heart text-white"></i>
+                            <!-- CARD 3: MUJER RURAL Y COMUNIDAD (INACTIVA: DELGADITA SLIT) -->
+                            <div class="floating-hero-card group relative w-[80px] sm:w-[95px] md:w-[110px] h-[310px] sm:h-[370px] skeuo-card overflow-hidden cursor-pointer shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] shrink-0 select-none opacity-70 hover:opacity-100" data-card="3" onclick="selectHeroSlide(3)">
+                                <img src="assets/img/quienes-somos.jpg" alt="Mujer Rural" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 skeuo-sharp">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-slate-950/20"></div>
+                                
+                                <!-- CONTENIDO COMPLETO -->
+                                <div class="card-full-content hidden absolute inset-0 p-5 flex flex-col justify-between text-white z-20">
+                                    <div class="flex items-center justify-between">
+                                        <div class="w-10 h-10 border-2 border-rose-400 bg-slate-950/80 p-1.5 shadow-xl flex items-center justify-center">
+                                            <i class="fa-solid fa-heart text-rose-400 text-lg"></i>
+                                        </div>
+                                        <span class="bg-rose-400 text-slate-950 font-mono text-[9px] font-black uppercase px-2.5 py-1 tracking-widest border border-rose-300 shadow">
+                                            COMUNIDAD
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span class="text-[10px] font-mono uppercase tracking-widest text-rose-300 block mb-1">INCLUSIÓN SOCIAL</span>
+                                        <h4 class="text-xl sm:text-2xl font-black font-display uppercase tracking-tight leading-none text-white">
+                                            FAMILIAS<br><span class="text-rose-400">& MUJER RURAL</span>
+                                        </h4>
+                                        <p class="text-xs text-slate-300 mt-2 line-clamp-2 font-light">Incentivos al liderazgo de mujeres productoras y relevo generacional en el campo.</p>
+                                        <span class="text-[10px] font-mono text-rose-300/80 uppercase block mt-2">SAN PEDRO, SUCRE</span>
+                                    </div>
                                 </div>
-                                <div class="absolute bottom-5 left-4 right-4 text-white">
-                                    <span class="text-[9px] font-mono uppercase tracking-widest text-rose-300 block mb-1">INCLUSIÓN SOCIAL</span>
-                                    <h4 class="text-lg sm:text-xl font-black font-display uppercase tracking-tight leading-none text-white">
-                                        FAMILIAS<br><span class="text-rose-400">& MUJER RURAL</span>
-                                    </h4>
-                                    <span class="text-[10px] font-mono text-slate-300 uppercase block mt-1">SAN PEDRO, SUCRE</span>
+
+                                <!-- CONTENIDO DELGADO (VISIBLE INICIALMENTE) -->
+                                <div class="card-slit-content absolute inset-0 p-3 flex flex-col justify-between items-center text-white z-20">
+                                    <div class="w-7 h-7 border border-white/30 bg-slate-950/70 p-1 flex items-center justify-center">
+                                        <i class="fa-solid fa-heart text-rose-400 text-xs"></i>
+                                    </div>
+                                    <span class="card-slit-label font-mono text-[10px] tracking-widest uppercase font-bold text-slate-200">
+                                        FAMILIAS Y MUJER RURAL
+                                    </span>
+                                    <span class="text-[9px] font-mono text-rose-400 font-bold">04</span>
                                 </div>
                             </div>
 
@@ -808,11 +929,11 @@
             <div class="relative w-full h-[440px] sm:h-[500px] md:h-[540px] flex items-center justify-center overflow-visible" id="coverflowStage">
                 
                 <!-- CARD 0 -->
-                <div class="coverflow-card absolute w-[260px] sm:w-[300px] md:w-[340px] h-[360px] sm:h-[420px] md:h-[460px] rounded-[32px] overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 ease-out group" data-category="asistencia" data-index="0" onclick="goToCoverflowIndex(0)">
-                    <img src="assets/img/cropped-corporagro-3.jpg" alt="Parcelas" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                <div class="coverflow-card absolute w-[260px] sm:w-[300px] md:w-[340px] h-[360px] sm:h-[420px] md:h-[460px] skeuo-card rounded-none overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 ease-out group" data-category="asistencia" data-index="0" onclick="goToCoverflowIndex(0)">
+                    <img src="assets/img/cropped-corporagro-3.jpg" alt="Parcelas" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 skeuo-sharp">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
                     <div class="absolute top-5 left-5">
-                        <span class="bg-emerald-600/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow">
+                        <span class="bg-emerald-600/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-none font-mono shadow border-l-2 border-emerald-400">
                             Magdalena • Siembra
                         </span>
                     </div>
@@ -823,16 +944,16 @@
                 </div>
 
                 <!-- CARD 1 (CON PLAY BADGE) -->
-                <div class="coverflow-card absolute w-[260px] sm:w-[300px] md:w-[340px] h-[360px] sm:h-[420px] md:h-[460px] rounded-[32px] overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 ease-out group" data-category="abonos" data-index="1" onclick="goToCoverflowIndex(1)">
-                    <img src="assets/img/elaboracion-de-abono-organico.jpg" alt="Abonos" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                <div class="coverflow-card absolute w-[260px] sm:w-[300px] md:w-[340px] h-[360px] sm:h-[420px] md:h-[460px] skeuo-card rounded-none overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 ease-out group" data-category="abonos" data-index="1" onclick="goToCoverflowIndex(1)">
+                    <img src="assets/img/elaboracion-de-abono-organico.jpg" alt="Abonos" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 skeuo-sharp">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
                     <div class="absolute top-5 left-5">
-                        <span class="bg-amber-600/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow">
+                        <span class="bg-amber-600/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-none font-mono shadow border-l-2 border-amber-400">
                             Bolívar • Agroecología
                         </span>
                     </div>
-                    <div class="absolute bottom-6 right-6 w-11 h-11 rounded-full bg-white text-slate-950 flex items-center justify-center shadow-xl group-hover:scale-110 transition">
-                        <i class="fa-solid fa-play text-xs ml-0.5"></i>
+                    <div class="absolute bottom-6 right-6 w-11 h-11 rounded-none bg-white text-slate-950 flex items-center justify-center shadow-xl group-hover:scale-110 transition border border-slate-300">
+                        <i class="fa-solid fa-play text-xs ml-0.5 text-blue-700"></i>
                     </div>
                     <div class="absolute bottom-6 left-6 right-16 text-white">
                         <h4 class="text-base sm:text-lg font-black font-display leading-tight">Biofábricas y Abonos Orgánicos</h4>
@@ -841,11 +962,11 @@
                 </div>
 
                 <!-- CARD 2 -->
-                <div class="coverflow-card absolute w-[260px] sm:w-[300px] md:w-[340px] h-[360px] sm:h-[420px] md:h-[460px] rounded-[32px] overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 ease-out group" data-category="asistencia" data-index="2" onclick="goToCoverflowIndex(2)">
-                    <img src="assets/img/nuestra-vision-corporagro-edited.jpg" alt="Asistencia" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                <div class="coverflow-card absolute w-[260px] sm:w-[300px] md:w-[340px] h-[360px] sm:h-[420px] md:h-[460px] skeuo-card rounded-none overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 ease-out group" data-category="asistencia" data-index="2" onclick="goToCoverflowIndex(2)">
+                    <img src="assets/img/nuestra-vision-corporagro-edited.jpg" alt="Asistencia" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 skeuo-sharp">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
                     <div class="absolute top-5 left-5">
-                        <span class="bg-sky-600/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow">
+                        <span class="bg-sky-600/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-none font-mono shadow border-l-2 border-sky-400">
                             Baranoa • Suelos
                         </span>
                     </div>
@@ -856,16 +977,16 @@
                 </div>
 
                 <!-- CARD 3 (CON PLAY BADGE) -->
-                <div class="coverflow-card absolute w-[260px] sm:w-[300px] md:w-[340px] h-[360px] sm:h-[420px] md:h-[460px] rounded-[32px] overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 ease-out group" data-category="mujer" data-index="3" onclick="goToCoverflowIndex(3)">
-                    <img src="assets/img/quienes-somos.jpg" alt="Familias" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                <div class="coverflow-card absolute w-[260px] sm:w-[300px] md:w-[340px] h-[360px] sm:h-[420px] md:h-[460px] skeuo-card rounded-none overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 ease-out group" data-category="mujer" data-index="3" onclick="goToCoverflowIndex(3)">
+                    <img src="assets/img/quienes-somos.jpg" alt="Familias" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 skeuo-sharp">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
                     <div class="absolute top-5 left-5">
-                        <span class="bg-emerald-700/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow">
+                        <span class="bg-emerald-700/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-none font-mono shadow border-l-2 border-emerald-400">
                             Santo Tomás • Familias
                         </span>
                     </div>
-                    <div class="absolute bottom-6 right-6 w-11 h-11 rounded-full bg-white text-slate-950 flex items-center justify-center shadow-xl group-hover:scale-110 transition">
-                        <i class="fa-solid fa-play text-xs ml-0.5"></i>
+                    <div class="absolute bottom-6 right-6 w-11 h-11 rounded-none bg-white text-slate-950 flex items-center justify-center shadow-xl group-hover:scale-110 transition border border-slate-300">
+                        <i class="fa-solid fa-play text-xs ml-0.5 text-blue-700"></i>
                     </div>
                     <div class="absolute bottom-6 left-6 right-16 text-white">
                         <h4 class="text-base sm:text-lg font-black font-display leading-tight">Asociatividad y Desarrollo Humano</h4>
@@ -874,11 +995,11 @@
                 </div>
 
                 <!-- CARD 4 -->
-                <div class="coverflow-card absolute w-[260px] sm:w-[300px] md:w-[340px] h-[360px] sm:h-[420px] md:h-[460px] rounded-[32px] overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 ease-out group" data-category="mujer" data-index="4" onclick="goToCoverflowIndex(4)">
-                    <img src="assets/img/nuestr-mision-corporagro-1.jpg" alt="Mujer Rural" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                <div class="coverflow-card absolute w-[260px] sm:w-[300px] md:w-[340px] h-[360px] sm:h-[420px] md:h-[460px] skeuo-card rounded-none overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 ease-out group" data-category="mujer" data-index="4" onclick="goToCoverflowIndex(4)">
+                    <img src="assets/img/nuestr-mision-corporagro-1.jpg" alt="Mujer Rural" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 skeuo-sharp">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
                     <div class="absolute top-5 left-5">
-                        <span class="bg-rose-600/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow">
+                        <span class="bg-blue-700/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-none font-mono shadow border-l-2 border-yellow-400">
                             Sucre • Mujer Rural
                         </span>
                     </div>
@@ -890,12 +1011,12 @@
 
             </div>
 
-            <!-- CONTROLES CIRCULARES MINIMALISTAS -->
+            <!-- CONTROLES RECTANGULARES MINIMALISTAS SKEUOMÓRFICOS -->
             <div class="flex items-center justify-center gap-4 mt-8">
-                <button onclick="prevCoverflow()" class="w-12 h-12 rounded-full border border-slate-300 hover:border-slate-950 hover:bg-slate-950 hover:text-white flex items-center justify-center text-slate-800 transition duration-200 shadow-sm hover:shadow-md cursor-pointer" aria-label="Tarjeta Anterior">
+                <button onclick="prevCoverflow()" class="w-12 h-12 rounded-none skeuo-card bg-slate-950 text-white hover:bg-amber-400 hover:text-slate-950 flex items-center justify-center transition duration-200 shadow-xl cursor-pointer border border-white/20" aria-label="Tarjeta Anterior">
                     <i class="fa-solid fa-arrow-left text-sm"></i>
                 </button>
-                <button onclick="nextCoverflow()" class="w-12 h-12 rounded-full border border-slate-300 hover:border-slate-950 hover:bg-slate-950 hover:text-white flex items-center justify-center text-slate-800 transition duration-200 shadow-sm hover:shadow-md cursor-pointer" aria-label="Tarjeta Siguiente">
+                <button onclick="nextCoverflow()" class="w-12 h-12 rounded-none skeuo-card bg-slate-950 text-white hover:bg-amber-400 hover:text-slate-950 flex items-center justify-center transition duration-200 shadow-xl cursor-pointer border border-white/20" aria-label="Tarjeta Siguiente">
                     <i class="fa-solid fa-arrow-right text-sm"></i>
                 </button>
             </div>
@@ -906,16 +1027,16 @@
     <!-- SECTION: CANAL DE PAGOS SEGUROS REDEBAN (FACTOR CONFIANZA BANCARIA TOTAL) -->
     <section id="pagos" class="py-24 bg-agro-forest text-white relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="bg-slate-950/90 rounded-[40px] p-8 sm:p-14 border-2 border-emerald-500/30 shadow-2xl backdrop-blur-2xl">
+            <div class="bg-slate-950/90 rounded-none skeuo-card p-8 sm:p-14 border-2 border-blue-600/40 shadow-2xl backdrop-blur-2xl">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                     
                     <div class="lg:col-span-7 space-y-6">
-                        <div class="inline-flex items-center gap-2 bg-red-950/80 border border-red-500/40 text-red-300 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider font-mono">
+                        <div class="inline-flex items-center gap-2 bg-blue-950/80 border border-blue-500/40 text-sky-300 px-4 py-1.5 rounded-none text-xs font-bold uppercase tracking-wider font-mono">
                             <i class="fa-solid fa-shield-halved text-yellow-400"></i> CANAL INSTITUCIONAL OFICIAL
                         </div>
 
                         <h2 class="text-3xl sm:text-5xl font-black font-display leading-tight">
-                            Pasarela Segura de Recaudos & Giros <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-amber-300">Redeban</span>
+                            Pasarela Segura de Recaudos & Giros <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-amber-300">Redeban</span>
                         </h2>
 
                         <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
@@ -1536,21 +1657,32 @@
                 }
             });
 
-            // 2. Destacar tarjeta activa y desplazar el riel
+            // 2. Destacar tarjeta activa (anchita y grandecita en el medio) y contraer las otras (delgaditas)
             cards.forEach((card, i) => {
+                const fullContent = card.querySelector('.card-full-content');
+                const slitContent = card.querySelector('.card-slit-content');
+                const img = card.querySelector('img');
+
                 if (i === idx) {
-                    card.classList.add('active', 'border-2', 'border-amber-400', 'scale-105', 'opacity-100');
-                    card.classList.remove('border-white/20', 'opacity-80');
+                    card.classList.remove('w-[80px]', 'sm:w-[95px]', 'md:w-[110px]', 'h-[310px]', 'sm:h-[370px]', 'opacity-70');
+                    card.classList.add('w-[270px]', 'sm:w-[340px]', 'md:w-[380px]', 'h-[330px]', 'sm:h-[390px]', 'skeuo-card-active', 'opacity-100');
+                    if (fullContent) fullContent.classList.remove('hidden');
+                    if (slitContent) slitContent.classList.add('hidden');
+                    if (img) img.classList.add('scale-105');
                 } else {
-                    card.classList.remove('active', 'border-2', 'border-amber-400', 'scale-105', 'opacity-100');
-                    card.classList.add('border-white/20', 'opacity-80');
+                    card.classList.remove('w-[270px]', 'sm:w-[340px]', 'md:w-[380px]', 'h-[330px]', 'sm:h-[390px]', 'skeuo-card-active', 'opacity-100');
+                    card.classList.add('w-[80px]', 'sm:w-[95px]', 'md:w-[110px]', 'h-[310px]', 'sm:h-[370px]', 'opacity-70');
+                    if (fullContent) fullContent.classList.add('hidden');
+                    if (slitContent) slitContent.classList.remove('hidden');
+                    if (img) img.classList.remove('scale-105');
                 }
             });
 
             const row = document.getElementById('floatingCardsRow');
             if (row) {
-                const cardWidth = window.innerWidth < 640 ? 200 : 250;
-                row.style.transform = `translateX(-${idx * (cardWidth * 0.75)}px)`;
+                // Desplazamiento inteligente para que la tarjeta activa quede siempre visible y cómoda
+                const offset = idx > 1 ? (idx - 1) * 110 : 0;
+                row.style.transform = `translateX(-${offset}px)`;
             }
 
             // Animar textos
