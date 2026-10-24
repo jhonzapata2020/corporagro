@@ -290,11 +290,23 @@
 
                 <!-- RIGHT CARDS STRIP: HORIZON / PATAGONIA 3D FLOATING CARDS -->
                 <div class="lg:col-span-6">
-                    <div class="relative w-full overflow-visible py-4">
-                        <div class="flex items-center gap-3 sm:gap-4 transition-transform duration-700 ease-out" id="floatingCardsRow">
+                    <div class="relative w-full overflow-visible py-2">
+                        
+                        <!-- DRAG HINT BADGE (COMFORT & TACTILE CONVENIENCE) -->
+                        <div class="flex items-center justify-between mb-2.5 px-1 select-none text-[10px] font-mono text-slate-300">
+                            <span class="flex items-center gap-2 bg-slate-950/60 backdrop-blur-md px-3 py-1 border border-white/10 text-slate-300">
+                                <i class="fa-solid fa-hand-pointer text-amber-400 animate-pulse"></i>
+                                <span>Arrastra con clic sostenido para halar</span>
+                            </span>
+                            <span class="text-slate-400 hidden sm:inline text-[9px] tracking-wider uppercase font-mono">
+                                4 PROYECTOS EN CAMPO
+                            </span>
+                        </div>
+
+                        <div class="flex items-center gap-3 sm:gap-4 transition-transform duration-700 ease-out cursor-grab select-none" id="floatingCardsRow">
                             
                             <!-- SPECIAL CARD: TERMINAL VERTICAL REDEBAN (RECTANGULAR, CERO BORDER-RADIUS, AZUL BANCARIO EN VIDRIO GLASSMORPHISM) -->
-                            <div onclick="openRedebanModal()" class="group relative w-[170px] sm:w-[200px] h-[330px] sm:h-[390px] skeuo-card rounded-none overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 border-2 border-blue-500/80 hover:border-blue-400 bg-slate-950/85 backdrop-blur-2xl shrink-0 p-4 sm:p-5 flex flex-col justify-between hover:scale-105 select-none">
+                            <div onclick="onHeroRedebanClick()" class="group relative w-[170px] sm:w-[200px] h-[330px] sm:h-[390px] skeuo-card rounded-none overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 border-2 border-blue-500/80 hover:border-blue-400 bg-slate-950/85 backdrop-blur-2xl shrink-0 p-4 sm:p-5 flex flex-col justify-between hover:scale-105 select-none">
                                 <!-- LUZ AMBIENTAL AZUL BANCARIO -->
                                 <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-600/30 blur-2xl rounded-none pointer-events-none"></div>
                                 <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-cyan-500/20 blur-2xl rounded-none pointer-events-none"></div>
@@ -343,7 +355,7 @@
                             </div>
 
                             <!-- CARD 0: SIEMBRA Y ASISTENCIA (ACTIVA: ANCHITA Y GRANDE EN EL MEDIO) -->
-                            <div class="floating-hero-card active group relative w-[270px] sm:w-[340px] md:w-[380px] h-[330px] sm:h-[390px] skeuo-card skeuo-card-active overflow-hidden cursor-pointer shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] shrink-0 select-none opacity-100" data-card="0" onclick="selectHeroSlide(0)">
+                            <div class="floating-hero-card active group relative w-[270px] sm:w-[340px] md:w-[380px] h-[330px] sm:h-[390px] skeuo-card skeuo-card-active overflow-hidden cursor-pointer shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] shrink-0 select-none opacity-100" data-card="0" onclick="onHeroCardClick(0)">
                                 <img src="assets/img/cropped-corporagro-3.jpg" alt="Asistencia Rural" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 skeuo-sharp">
                                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/35 to-transparent"></div>
                                 
@@ -380,7 +392,7 @@
                             </div>
 
                             <!-- CARD 1: DISTRITOS DE RIEGO (INACTIVA: DELGADITA SLIT) -->
-                            <div class="floating-hero-card group relative w-[80px] sm:w-[95px] md:w-[110px] h-[310px] sm:h-[370px] skeuo-card overflow-hidden cursor-pointer shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] shrink-0 select-none opacity-70 hover:opacity-100" data-card="1" onclick="selectHeroSlide(1)">
+                            <div class="floating-hero-card group relative w-[80px] sm:w-[95px] md:w-[110px] h-[310px] sm:h-[370px] skeuo-card overflow-hidden cursor-pointer shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] shrink-0 select-none opacity-70 hover:opacity-100" data-card="1" onclick="onHeroCardClick(1)">
                                 <img src="assets/img/nuestra-vision-corporagro-edited.jpg" alt="Distritos de Riego" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 skeuo-sharp">
                                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-slate-950/20"></div>
                                 
@@ -417,7 +429,7 @@
                             </div>
 
                             <!-- CARD 2: BIOFÁBRICAS Y ABONOS (INACTIVA: DELGADITA SLIT) -->
-                            <div class="floating-hero-card group relative w-[80px] sm:w-[95px] md:w-[110px] h-[310px] sm:h-[370px] skeuo-card overflow-hidden cursor-pointer shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] shrink-0 select-none opacity-70 hover:opacity-100" data-card="2" onclick="selectHeroSlide(2)">
+                            <div class="floating-hero-card group relative w-[80px] sm:w-[95px] md:w-[110px] h-[310px] sm:h-[370px] skeuo-card overflow-hidden cursor-pointer shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] shrink-0 select-none opacity-70 hover:opacity-100" data-card="2" onclick="onHeroCardClick(2)">
                                 <img src="assets/img/elaboracion-de-abono-organico.jpg" alt="Biofábricas" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 skeuo-sharp">
                                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-slate-950/20"></div>
                                 
@@ -454,7 +466,7 @@
                             </div>
 
                             <!-- CARD 3: MUJER RURAL Y COMUNIDAD (INACTIVA: DELGADITA SLIT) -->
-                            <div class="floating-hero-card group relative w-[80px] sm:w-[95px] md:w-[110px] h-[310px] sm:h-[370px] skeuo-card overflow-hidden cursor-pointer shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] shrink-0 select-none opacity-70 hover:opacity-100" data-card="3" onclick="selectHeroSlide(3)">
+                            <div class="floating-hero-card group relative w-[80px] sm:w-[95px] md:w-[110px] h-[310px] sm:h-[370px] skeuo-card overflow-hidden cursor-pointer shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] shrink-0 select-none opacity-70 hover:opacity-100" data-card="3" onclick="onHeroCardClick(3)">
                                 <img src="assets/img/quienes-somos.jpg" alt="Mujer Rural" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 skeuo-sharp">
                                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-slate-950/20"></div>
                                 
@@ -929,7 +941,7 @@
             <div class="relative w-full h-[440px] sm:h-[500px] md:h-[540px] flex items-center justify-center overflow-visible" id="coverflowStage">
                 
                 <!-- CARD 0 -->
-                <div class="coverflow-card absolute w-[260px] sm:w-[300px] md:w-[340px] h-[360px] sm:h-[420px] md:h-[460px] skeuo-card rounded-none overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 ease-out group" data-category="asistencia" data-index="0" onclick="goToCoverflowIndex(0)">
+                <div class="coverflow-card absolute w-[260px] sm:w-[300px] md:w-[340px] h-[360px] sm:h-[420px] md:h-[460px] skeuo-card rounded-none overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 ease-out group" data-category="asistencia" data-index="0" onclick="onCoverflowCardClick(0)">
                     <img src="assets/img/cropped-corporagro-3.jpg" alt="Parcelas" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 skeuo-sharp">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
                     <div class="absolute top-5 left-5">
@@ -944,7 +956,7 @@
                 </div>
 
                 <!-- CARD 1 (CON PLAY BADGE) -->
-                <div class="coverflow-card absolute w-[260px] sm:w-[300px] md:w-[340px] h-[360px] sm:h-[420px] md:h-[460px] skeuo-card rounded-none overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 ease-out group" data-category="abonos" data-index="1" onclick="goToCoverflowIndex(1)">
+                <div class="coverflow-card absolute w-[260px] sm:w-[300px] md:w-[340px] h-[360px] sm:h-[420px] md:h-[460px] skeuo-card rounded-none overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 ease-out group" data-category="abonos" data-index="1" onclick="onCoverflowCardClick(1)">
                     <img src="assets/img/elaboracion-de-abono-organico.jpg" alt="Abonos" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 skeuo-sharp">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
                     <div class="absolute top-5 left-5">
@@ -962,7 +974,7 @@
                 </div>
 
                 <!-- CARD 2 -->
-                <div class="coverflow-card absolute w-[260px] sm:w-[300px] md:w-[340px] h-[360px] sm:h-[420px] md:h-[460px] skeuo-card rounded-none overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 ease-out group" data-category="asistencia" data-index="2" onclick="goToCoverflowIndex(2)">
+                <div class="coverflow-card absolute w-[260px] sm:w-[300px] md:w-[340px] h-[360px] sm:h-[420px] md:h-[460px] skeuo-card rounded-none overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 ease-out group" data-category="asistencia" data-index="2" onclick="onCoverflowCardClick(2)">
                     <img src="assets/img/nuestra-vision-corporagro-edited.jpg" alt="Asistencia" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 skeuo-sharp">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
                     <div class="absolute top-5 left-5">
@@ -977,7 +989,7 @@
                 </div>
 
                 <!-- CARD 3 (CON PLAY BADGE) -->
-                <div class="coverflow-card absolute w-[260px] sm:w-[300px] md:w-[340px] h-[360px] sm:h-[420px] md:h-[460px] skeuo-card rounded-none overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 ease-out group" data-category="mujer" data-index="3" onclick="goToCoverflowIndex(3)">
+                <div class="coverflow-card absolute w-[260px] sm:w-[300px] md:w-[340px] h-[360px] sm:h-[420px] md:h-[460px] skeuo-card rounded-none overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 ease-out group" data-category="mujer" data-index="3" onclick="onCoverflowCardClick(3)">
                     <img src="assets/img/quienes-somos.jpg" alt="Familias" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 skeuo-sharp">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
                     <div class="absolute top-5 left-5">
@@ -995,7 +1007,7 @@
                 </div>
 
                 <!-- CARD 4 -->
-                <div class="coverflow-card absolute w-[260px] sm:w-[300px] md:w-[340px] h-[360px] sm:h-[420px] md:h-[460px] skeuo-card rounded-none overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 ease-out group" data-category="mujer" data-index="4" onclick="goToCoverflowIndex(4)">
+                <div class="coverflow-card absolute w-[260px] sm:w-[300px] md:w-[340px] h-[360px] sm:h-[420px] md:h-[460px] skeuo-card rounded-none overflow-hidden cursor-pointer shadow-2xl transition-all duration-500 ease-out group" data-category="mujer" data-index="4" onclick="onCoverflowCardClick(4)">
                     <img src="assets/img/nuestr-mision-corporagro-1.jpg" alt="Mujer Rural" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 skeuo-sharp">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
                     <div class="absolute top-5 left-5">
@@ -1628,6 +1640,24 @@
         let heroSecondsElapsed = 0;
         let heroIsPlaying = true;
         let heroTimerInterval = null;
+        let currentHeroOffset = 0;
+        let heroHasMoved = false;
+
+        function onHeroCardClick(idx) {
+            if (heroHasMoved) {
+                heroHasMoved = false;
+                return;
+            }
+            selectHeroSlide(idx);
+        }
+
+        function onHeroRedebanClick() {
+            if (heroHasMoved) {
+                heroHasMoved = false;
+                return;
+            }
+            openRedebanModal();
+        }
 
         function selectHeroSlide(idx) {
             heroCurrentIdx = idx;
@@ -1681,8 +1711,8 @@
             const row = document.getElementById('floatingCardsRow');
             if (row) {
                 // Desplazamiento inteligente para que la tarjeta activa quede siempre visible y cómoda
-                const offset = idx > 1 ? (idx - 1) * 110 : 0;
-                row.style.transform = `translateX(-${offset}px)`;
+                currentHeroOffset = idx > 1 ? (idx - 1) * 110 : 0;
+                row.style.transform = `translateX(-${currentHeroOffset}px)`;
             }
 
             // Animar textos
@@ -1752,6 +1782,96 @@
         }
 
         startHeroCinematicLoop();
+
+        // ==========================================
+        // DRAG ENGINE: HALAR TARJETAS HERO CON CLIC SOSTENIDO
+        // ==========================================
+        const heroRowEl = document.getElementById('floatingCardsRow');
+        let heroIsDragging = false;
+        let heroStartX = 0;
+        let heroDeltaX = 0;
+
+        if (heroRowEl) {
+            heroRowEl.addEventListener('mousedown', (e) => {
+                heroIsDragging = true;
+                heroHasMoved = false;
+                heroStartX = e.pageX;
+                heroDeltaX = 0;
+                heroRowEl.style.transition = 'none';
+                heroRowEl.classList.add('cursor-grabbing');
+                heroRowEl.classList.remove('cursor-grab');
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!heroIsDragging) return;
+                heroDeltaX = e.pageX - heroStartX;
+                if (Math.abs(heroDeltaX) > 6) {
+                    heroHasMoved = true;
+                }
+                heroRowEl.style.transform = `translateX(-${currentHeroOffset - heroDeltaX}px)`;
+            });
+
+            window.addEventListener('mouseup', () => {
+                if (!heroIsDragging) return;
+                heroIsDragging = false;
+                heroRowEl.classList.remove('cursor-grabbing');
+                heroRowEl.classList.add('cursor-grab');
+                heroRowEl.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+
+                if (heroHasMoved) {
+                    if (heroDeltaX < -45) {
+                        // Halar hacia la izquierda -> siguiente
+                        const nextIdx = (heroCurrentIdx + 1) % heroTotal;
+                        selectHeroSlide(nextIdx);
+                    } else if (heroDeltaX > 45) {
+                        // Halar hacia la derecha -> anterior
+                        const prevIdx = (heroCurrentIdx - 1 + heroTotal) % heroTotal;
+                        selectHeroSlide(prevIdx);
+                    } else {
+                        // Reajustar a la posición de la activa
+                        selectHeroSlide(heroCurrentIdx);
+                    }
+                    setTimeout(() => { heroHasMoved = false; }, 80);
+                }
+            });
+
+            // Touch para Móviles y Tablets
+            heroRowEl.addEventListener('touchstart', (e) => {
+                heroIsDragging = true;
+                heroHasMoved = false;
+                heroStartX = e.touches[0].pageX;
+                heroDeltaX = 0;
+                heroRowEl.style.transition = 'none';
+            }, { passive: true });
+
+            heroRowEl.addEventListener('touchmove', (e) => {
+                if (!heroIsDragging) return;
+                heroDeltaX = e.touches[0].pageX - heroStartX;
+                if (Math.abs(heroDeltaX) > 6) {
+                    heroHasMoved = true;
+                }
+                heroRowEl.style.transform = `translateX(-${currentHeroOffset - heroDeltaX}px)`;
+            }, { passive: true });
+
+            heroRowEl.addEventListener('touchend', () => {
+                if (!heroIsDragging) return;
+                heroIsDragging = false;
+                heroRowEl.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+
+                if (heroHasMoved) {
+                    if (heroDeltaX < -40) {
+                        const nextIdx = (heroCurrentIdx + 1) % heroTotal;
+                        selectHeroSlide(nextIdx);
+                    } else if (heroDeltaX > 40) {
+                        const prevIdx = (heroCurrentIdx - 1 + heroTotal) % heroTotal;
+                        selectHeroSlide(prevIdx);
+                    } else {
+                        selectHeroSlide(heroCurrentIdx);
+                    }
+                    setTimeout(() => { heroHasMoved = false; }, 80);
+                }
+            });
+        }
 
         // ==========================================
         // 3D COVERFLOW VISUAL DIARY CONTROLLER
@@ -1848,6 +1968,16 @@
             updateCoverflowLayout();
         }
 
+        let coverflowHasMoved = false;
+
+        function onCoverflowCardClick(idx) {
+            if (coverflowHasMoved) {
+                coverflowHasMoved = false;
+                return;
+            }
+            goToCoverflowIndex(idx);
+        }
+
         function goToCoverflowIndex(cardOriginalIndex) {
             const allCards = Array.from(document.querySelectorAll('.coverflow-card'));
             const targetCard = allCards.find(c => parseInt(c.getAttribute('data-index')) === cardOriginalIndex);
@@ -1878,20 +2008,66 @@
             updateCoverflowLayout();
         }
 
-        // Swipe táctil
-        let touchStartX = 0;
-        let touchEndX = 0;
+        // DRAG & SWIPE ENGINE PARA COVERFLOW (CLICK SOSTENIDO PARA HALAR)
+        let coverflowStartX = 0;
+        let coverflowDeltaX = 0;
+        let coverflowIsDragging = false;
         const stage = document.getElementById('coverflowStage');
+
         if (stage) {
+            stage.classList.add('cursor-grab', 'select-none');
+
+            stage.addEventListener('mousedown', (e) => {
+                coverflowIsDragging = true;
+                coverflowHasMoved = false;
+                coverflowStartX = e.pageX;
+                coverflowDeltaX = 0;
+                stage.classList.add('cursor-grabbing');
+                stage.classList.remove('cursor-grab');
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!coverflowIsDragging) return;
+                coverflowDeltaX = e.pageX - coverflowStartX;
+                if (Math.abs(coverflowDeltaX) > 8) {
+                    coverflowHasMoved = true;
+                }
+            });
+
+            window.addEventListener('mouseup', () => {
+                if (!coverflowIsDragging) return;
+                coverflowIsDragging = false;
+                stage.classList.remove('cursor-grabbing');
+                stage.classList.add('cursor-grab');
+
+                if (coverflowHasMoved && Math.abs(coverflowDeltaX) > 40) {
+                    if (coverflowDeltaX < -40) nextCoverflow();
+                    else prevCoverflow();
+                }
+                setTimeout(() => { coverflowHasMoved = false; }, 80);
+            });
+
+            // Touch
             stage.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
+                coverflowStartX = e.touches[0].pageX;
+                coverflowDeltaX = 0;
+                coverflowHasMoved = false;
             }, { passive: true });
 
-            stage.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                if (touchStartX - touchEndX > 50) nextCoverflow();
-                if (touchEndX - touchStartX > 50) prevCoverflow();
+            stage.addEventListener('touchmove', (e) => {
+                coverflowDeltaX = e.touches[0].pageX - coverflowStartX;
+                if (Math.abs(coverflowDeltaX) > 8) {
+                    coverflowHasMoved = true;
+                }
             }, { passive: true });
+
+            stage.addEventListener('touchend', () => {
+                if (coverflowHasMoved && Math.abs(coverflowDeltaX) > 40) {
+                    if (coverflowDeltaX < -40) nextCoverflow();
+                    else prevCoverflow();
+                }
+                setTimeout(() => { coverflowHasMoved = false; }, 80);
+            });
         }
 
         window.addEventListener('resize', () => {
